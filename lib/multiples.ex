@@ -12,15 +12,12 @@ defmodule Multiples do
 
   """
   @spec sum_mult_3_5(any) ::integer()
+  def sum_mult_3_5(0), do: 0
   def sum_mult_3_5(n) do
-    if n == 0 do
-      0
+    if rem(n, 3) == 0 || rem(n, 5) == 0 do
+      n + sum_mult_3_5(n - 1)
     else
-      if rem(n, 3) == 0 || rem(n, 5) == 0 do
-        n + sum_mult_3_5(n - 1)
-      else
-        sum_mult_3_5(n - 1)
-      end
+      sum_mult_3_5(n - 1)
     end
   end
 end
